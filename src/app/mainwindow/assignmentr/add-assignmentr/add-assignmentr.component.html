@@ -1,0 +1,35 @@
+<div style="margin-top: 5%; height:900px">
+    <section class="section columns">
+        <div class="column is-full-desktop is-full-mobile">
+
+            <div class="tabs is-toggle is-fullwidth">
+                <ul>
+                    <li class="is-active">
+                        <a routerLink="/assignments/">
+
+                            <span>Assignment Form</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/assignments/create">
+
+                            <span>Assignment List</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="panel" style="margin: 3%;margin-top: -3%;">
+        <p class="panel-heading" style="background-color:hsl(0, 0%, 88%) ;color:hsl(0, 0%, 21%)">
+            Add Assignment
+        </p>
+        <div class="panel-block ">
+            <div style="overflow-y:auto ;overflow-x: hidden;height: 500px; width: 500%;">
+
+                <app-add-assignmentr-elements></app-add-assignmentr-elements>
+            </div>
+        </div>
+    </section>
+</div>

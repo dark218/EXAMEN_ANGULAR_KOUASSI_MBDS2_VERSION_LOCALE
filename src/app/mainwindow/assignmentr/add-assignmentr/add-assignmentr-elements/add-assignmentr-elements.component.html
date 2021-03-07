@@ -1,0 +1,120 @@
+<div style="overflow-y:auto ;overflow-x: hidden;height: 900px;">
+
+
+    <div class="spinner-box loadCenter" *ngIf="isLoading">
+        <div class="configure-border-1">
+            <div class="configure-core"></div>
+        </div>
+        <div class="configure-border-2">
+            <div class="configure-core"></div>
+        </div>
+    </div>
+
+
+    <form [formGroup]="form" (submit)="onAddAssignment()" *ngIf="!isLoading">
+
+
+
+
+        <div class="field">
+            <label class="label">NOM DU DEVOIR</label>
+            <input type="text" class="is-center input" formControlName="nomdevoir" style="width: 100%;" placeholder="PROJET" />
+            <span class="error-msg" *ngIf="(registerFormControl.nomdevoir.touched ) && registerFormControl.nomdevoir.errors?.required">
+      *Ajouter un devoir
+    </span>
+        </div>
+        <div class="field">
+            <label class="label">NOM DE L ELEVE</label>
+            <input type="text" class="is-center input" formControlName="nomeleve" style="width: 100%;" placeholder="KOUASSI" />
+            <span class="error-msg" *ngIf="(registerFormControl.nomeleve.touched ) && registerFormControl.nomeleve.errors?.required">
+      *Ajouter un eleve
+               </span>
+        </div>
+
+
+        <div class="field">
+            <label class="label">DATE DE RENDU</label>
+            <input type="date" class="is-center input" formControlName="datederendu" style="width: 100%;" placeholder="071xxxxxxx" />
+        </div>
+
+
+        <div class="field">
+            <label class="label">NOM DE LA MATIERE</label>
+
+            <mat-select class="is-center input" formControlName="nommatiere">
+
+                <mat-option *ngFor="let matiere of matieres" [value]="matiere.nommat">{{ matiere.nommat }}</mat-option>
+            </mat-select>
+
+        </div>
+        <div class="field">
+            <label class="label">NOM DU PROF</label>
+
+            <mat-select class="is-center input" formControlName="nomprof">
+
+                <mat-option *ngFor="let professeur of professeurs" [value]="professeur.nomprof">{{professeur.nomprof}}</mat-option>
+            </mat-select>
+
+        </div>
+        <p>IMAGE DU PROFESSEUR</p>
+        <!-- Image Preview -->
+        <div class="form-group">
+            <div class="preview" *ngIf="preview && preview !== null">
+                <img [src]="preview" [alt]="form.value.nommat">
+            </div>
+        </div>
+
+        <!-- File Input -->
+        <div class="form-group">
+            <input type="file" (change)="uploadFile($event)">
+        </div>
+        <div class="field">
+            <label class="label">NOTE</label>
+            <input type="text" class="is-center input" formControlName="note" style="width: 100%;" placeholder="13" />
+            <span class="error-msg" *ngIf="(registerFormControl.note.touched ) && registerFormControl.note.errors?.required">
+      *Ajouter une note
+    </span>
+        </div>
+        <div class="field">
+            <label class="label">REMARQUE</label>
+            <input type="text" class="is-center input" formControlName="remarque" style="width: 100%;" placeholder="Assez bien" />
+            <span class="error-msg" *ngIf="(registerFormControl.remarque.touched ) && registerFormControl.remarque.errors?.required">
+      *Ajouter une remarque
+    </span>
+        </div>
+
+
+
+
+
+        <div class="panel-block" style="width: 100%;margin-top: 30px;">
+            <button class="button is-primary   is-fullwidth" type="submit" (click)="onDelete(assignment.id)">
+      Add
+    </button>
+        </div>
+    </form>
+</div>
+
+
+<style>
+    .menu-list {
+        border-radius: 2px;
+        width: 220%;
+        display: block;
+        padding: 10px;
+    }
+    
+    .btn {
+        width: 100%;
+        color: hsl(0, 0%, 21%);
+        background-color: hsl(0, 0%, 88%);
+        border-radius: 3px;
+    }
+    
+    .newclass :hover {
+        background-color: hsl(0, 0%, 21%);
+        color: hsl(0, 0%, 88%);
+    }
+</style>
+<script>
+</script>

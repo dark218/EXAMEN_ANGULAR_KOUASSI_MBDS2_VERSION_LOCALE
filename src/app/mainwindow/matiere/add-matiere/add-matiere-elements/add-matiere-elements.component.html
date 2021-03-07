@@ -1,0 +1,81 @@
+<div style="overflow-y:auto ;overflow-x: hidden;height: 500px;">
+
+
+    <div class="spinner-box loadCenter" *ngIf="isLoading">
+        <div class="configure-border-1">
+            <div class="configure-core"></div>
+        </div>
+        <div class="configure-border-2">
+            <div class="configure-core"></div>
+        </div>
+    </div>
+
+
+    <form [formGroup]="form" (submit)="onAddMatiere()" *ngIf="!isLoading">
+
+
+        <div class="field">
+            <label class="label">Nom de la Matiere</label>
+            <input type="text" class="is-center input" formControlName="nommat" style="width: 100%;" placeholder="NODE JS">
+            <span class="error-msg" *ngIf="(registerFormControl.nommat.touched ) && registerFormControl.nommat.errors?.required">
+              *Ajouter un nom
+            </span>
+
+        </div>
+        <!-- Image Preview -->
+        <div class="form-group">
+            <div class="preview" *ngIf="preview && preview !== null">
+                <img [src]="preview" [alt]="form.value.nommat">
+            </div>
+        </div>
+
+        <!-- File Input -->
+        <div class="form-group">
+            <input type="file" (change)="uploadFile($event)">
+        </div>
+
+
+        <div class="field">
+            <label class="label">Professeur</label>
+
+            <mat-select class="is-center input" formControlName="nomprof">
+
+                <mat-option *ngFor="let professeur of professeurs" [value]="professeur.nomprof">{{ professeur.nomprof }}</mat-option>
+            </mat-select>
+
+        </div>
+
+
+
+
+        <div class="panel-block" style="width: 100%;margin-top: 30px;">
+            <button class="button is-primary   is-fullwidth" type="submit">
+      Add
+    </button>
+        </div>
+    </form>
+</div>
+
+
+<style>
+    .menu-list {
+        border-radius: 2px;
+        width: 220%;
+        display: block;
+        padding: 10px;
+    }
+    
+    .btn {
+        width: 100%;
+        color: hsl(0, 0%, 21%);
+        background-color: hsl(0, 0%, 88%);
+        border-radius: 3px;
+    }
+    
+    .newclass :hover {
+        background-color: hsl(0, 0%, 21%);
+        color: hsl(0, 0%, 88%);
+    }
+</style>
+<script>
+</script>

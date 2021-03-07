@@ -1,0 +1,18 @@
+<div class="navbar-end level-right">
+    <div class="navbar-item level-item">
+
+
+        <div class="buttons">
+
+            <!--  <button class="button is-accent" (click)="PeuplerLaBase()"> Peupler la base</button>-->
+            <button *ngIf="userIsAuthenticated" class="button is-primary" (click)="onLogout()">
+        <strong>Log out</strong>
+      </button>
+            <button *ngIf="!isAuthenticated" class="button is-primary is-rounded">
+        <strong><span class="icon"><i class="fa fa-cogs fa-lg "  routerLink="/settings"></i></span></strong>
+      </button>
+        </div>
+
+
+    </div>
+</div>

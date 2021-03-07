@@ -1,0 +1,100 @@
+<section class="panel">
+
+    <div class="panel-block ">
+        <div style="height: 50px; width: 100%;">
+
+            <div class="field has-addons is-full">
+                <div class="control is-full" style="width: 100%;">
+                    <input class="input" type="text" placeholder="Find Assignment by name" [(ngModel)]="searchTerm">
+                </div>
+                <div class="control">
+                    <a class="button is-primary">
+            Search
+          </a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="panel-block">
+
+    </div>
+</section>
+
+<div style="overflow-y:auto ;overflow-x: hidden;height: 500px;">
+    <table class="table is-full menu-list">
+        <tbody>
+
+            <div class="spinner-box loadCenter is-center" *ngIf="isLoading">
+                <div class="configure-border-1">
+                    <div class="configure-core"></div>
+                </div>
+                <div class="configure-border-2">
+                    <div class="configure-core"></div>
+                </div>
+            </div>
+            <div *ngIf="!isLoading">
+                <tr *ngFor="let assignment of assignments | assignmentFilter: searchTerm">
+                    <div class="div columns  is-full btn r" style="width: 135%;">
+                        <div class="div column">
+                            <table class="table is-full" style="width: 100%;">
+                                <thead style="font-weight: bold;">
+                                    <td>NOM DU DEVOIR</td>
+                                    <td>NOM DE L eLEVE </td>
+                                    <td>DATE DE RENDU</td>
+                                    <td>NOM DELA MATIERE</td>
+                                    <td>NOM DU PROFESSEUR</td>
+                                    <td>IMAGE DU PROFESSEUR</td>
+
+                                    <td></td>
+
+                                </thead>
+                                <tbody>
+                                    <td style="width: 3%;">{{ assignment.nomdevoir }}</td>
+                                    <td style="width: 3%;">{{ assignment.nomeleve }} </td>
+                                    <td style="width: 3%;">{{ assignment.datederendu }} </td>
+                                    <td style="width: 3%;">{{ assignment.nommatiere }} </td>
+                                    <td style="width: 3%;">{{ assignment.nomprof }} </td>
+                                    <td style="width: 2%;"><img [src]="assignment.avatar1"></td>
+
+
+                                    <td class="level-right" *ngIf="userIsAuthenticated" style="width: 10%;margin-right: 50%;">
+                                        <a class="button is-small is-primary" style="font-weight: bold;margin-right: 1%;" [routerLink]="['/edita',assignment.id]">Edit </a>
+                                        <button class="button is-small is-danger" style="font-weight: bold;" (click)="onDelete(assignment.id)">Delete</button>
+                                    </td>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div><br>
+                </tr>
+            </div>
+
+
+
+
+
+        </tbody>
+    </table>
+</div>
+<style>
+    .menu-list {
+        border-radius: 2px;
+        width: 220%;
+        display: block;
+        padding: 10px;
+    }
+    
+    .btn {
+        width: 100%;
+        color: hsl(0, 0%, 21%);
+        background-color: hsl(0, 0%, 88%);
+        border-radius: 3px;
+    }
+    
+    .newclass :hover {
+        background-color: hsl(0, 0%, 21%);
+        color: hsl(0, 0%, 88%);
+    }
+</style>

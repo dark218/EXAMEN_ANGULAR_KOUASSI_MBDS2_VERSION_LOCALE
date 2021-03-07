@@ -1,0 +1,65 @@
+<div class="container">
+
+    <p>DragandDrop</p>
+
+    <div class="list-container">
+
+        <div class="todo-container column-container">
+            <div class="list" cdkDropList #todoList="cdkDropList" [cdkDropListData]="assignments" [cdkDropListConnectedTo]="[doneList]">
+                <h2>Assignment non rendu</h2>
+                <mat-card *ngFor="let assignment of assignments; " cdkDrag>
+                    <mat-card-header>
+                        <div mat-card-avatar class="example-header-image">
+                            <img [src]="assignment.avatar1" class="mr-3">
+                        </div>
+                        <mat-card-title>{{assignment.nomdevoir}}</mat-card-title>
+                        <mat-card-title>Module:{{assignment.nommatiere}}</mat-card-title>
+                        <mat-card-subtitle>Nom du professeur:{{assignment.nomprof}} </mat-card-subtitle>
+                        <mat-card-subtitle>Nom de l eleve:{{assignment.nomeleve}} </mat-card-subtitle>
+
+
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+
+                        </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <a class="button is-small is-primary" style="font-weight: bold;margin-right: 1%;" [routerLink]="['/editar',assignment.id]">Noter </a>
+                        <button class="button is-small is-danger" style="font-weight: bold;" (click)="onDelete(assignment.id)">Delete</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+
+        <div class="done-container column-container">
+            <div class="list" cdkDropList #doneList="cdkDropList" [cdkDropListData]="assignmentrs" [cdkDropListConnectedTo]="todoList" (cdkDropListDropped)="onDrop($event)">
+                <h2>Assignment rendu</h2>
+                <mat-card *ngFor=" let assignment of assignmentrs " cdkDrag>
+                    <mat-card-header>
+                        <div mat-card-avatar class="example-header-image">
+                            <img [src]="assignment.avatar1" class="mr-3">
+                        </div>
+                        <mat-card-title>{{assignment.nomdevoir}}</mat-card-title>
+                        <mat-card-title>Module:{{assignment.nommatiere}}</mat-card-title>
+                        <mat-card-subtitle>Nom du professeur:{{assignment.nomprof}} </mat-card-subtitle>
+                        <mat-card-subtitle>Nom de l eleve:{{assignment.nomeleve}} </mat-card-subtitle>
+
+
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>
+                            Note:{{assignment.note}}<br> Remarque:{{assignment.remarque}}
+                        </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+
+                        <button class="button is-small is-danger " style="font-weight: bold; " (click)="onDeleter(assignment.id) ">Delete</button>
+                    </mat-card-actions>
+
+                </mat-card>
+            </div>
+        </div>
+
+    </div>
+</div>

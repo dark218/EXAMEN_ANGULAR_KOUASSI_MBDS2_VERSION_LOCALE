@@ -1,0 +1,63 @@
+<div style="overflow-y:auto ;overflow-x: hidden;height: 500px;">
+
+
+
+
+    <form [formGroup]="form" (submit)="onAddProfesseur()">
+
+
+        <div class="field">
+            <label class="label">NOM DU PROFESSEUR</label>
+            <input type="text" class="is-center input" formControlName="nomprof" style="width: 100%;" placeholder="DR BUFFA">
+            <span class="error-msg" *ngIf="(registerFormControl.nomprof.touched ) && registerFormControl.nomprof.errors?.required">
+      *Ajouter un nom
+    </span>
+            <p>IMAGE DU PROFESSEUR</p>
+        </div>
+        <!-- Image Preview -->
+        <div class="form-group">
+            <div class="preview" *ngIf="preview && preview !== null">
+                <img [src]="preview" [alt]="form.value.nomprof">
+            </div>
+        </div>
+
+        <!-- File Input -->
+        <div class="form-group">
+            <input type="file" (change)="uploadFile($event)">
+        </div>
+
+
+
+
+
+        <div class="panel-block" style="width: 100%;margin-top: 30px;">
+            <button class="button is-primary   is-fullwidth" type="submit">
+      Add
+    </button>
+        </div>
+    </form>
+</div>
+
+
+<style>
+    .menu-list {
+        border-radius: 2px;
+        width: 220%;
+        display: block;
+        padding: 10px;
+    }
+    
+    .btn {
+        width: 100%;
+        color: hsl(0, 0%, 21%);
+        background-color: hsl(0, 0%, 88%);
+        border-radius: 3px;
+    }
+    
+    .newclass :hover {
+        background-color: hsl(0, 0%, 21%);
+        color: hsl(0, 0%, 88%);
+    }
+</style>
+<script>
+</script>

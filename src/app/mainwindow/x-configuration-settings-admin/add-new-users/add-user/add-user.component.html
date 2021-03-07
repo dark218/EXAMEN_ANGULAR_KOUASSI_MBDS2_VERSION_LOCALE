@@ -1,0 +1,48 @@
+<div style="overflow-y:auto ;overflow-x: hidden;height: 1500px;">
+
+
+    <form [formGroup]="form" (submit)="onSignup()">
+
+
+        <div class="field">
+            <div class="control">
+
+                <input formControlName="name" class="input is-medium" type="name" placeholder="User Name" autofocus="" required>
+                <span class="error-msg" *ngIf="(registerFormControl.name.touched ) && registerFormControl.name.errors?.required">
+            *Ajouter un nom
+          </span>
+            </div>
+        </div>
+
+
+        <div class="field">
+            <div class="control">
+
+                <input formControlName="email" class="input is-medium" type="email" placeholder="User Email" autofocus="" required email>
+                <span class="error-msg" *ngIf="(registerFormControl.email.touched ) && registerFormControl.email.errors?.required">
+            *Ajouter un email valide
+          </span>
+            </div>
+        </div>
+
+
+
+        <div class="field">
+            <div class="control">
+
+                <input formControlName="password" class="input is-medium" type="password" placeholder="User Password" required>
+                <span class="error-msg" *ngIf="(registerFormControl.password.touched ) && registerFormControl.password.errors?.required">
+              *Ajouter un mot de passe
+            </span>
+            </div>
+        </div>
+
+
+
+        <br>
+
+        <button class="button is-block is-primary is-medium is-fullwidth" type="submit">SignUp User</button>
+    </form>
+
+
+</div>
